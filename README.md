@@ -32,21 +32,21 @@ Check out the updated GUI and database integration in action:
 ## Database Schema
 The database includes tables for Persons, Access Logs, Permissions, Cameras, and Report Exports. See the schema diagram below for details:
 
-![Database Schema](screenshots/db_schema.png)
+![Database Schema](Screenshots/db_schema.png)
 
 ## Screenshots
 - **Attendance Management**: Displays a table of logs with time and status filters.
-  ![Attendance Management](screenshots/attendance_management.png)
+  ![Attendance Management](Screenshots/attendance_management.png)
 - **Report Page**: Features a calendar and list of exported reports.
-  ![Report Page](screenshots/report_page.png)
+  ![Report Page](Screenshots/report_page.png)
 - **User Entry**: Form for registering new users with camera preview.
-  ![User Entry](screenshots/user_entry.png)
+  ![User Entry](Screenshots/user_entry.png)
 - **Face Detection**: Green bounding box around detected faces with status display.
-  ![Face Recognition](screenshots/face_recognition.png)
+  ![Face Recognition](Screenshots/face_recognition.png)
 - **User Info**: Shows user details post-recognition, including pop-up info.
-  ![User Info](screenshots/user_info.png)
+  ![User Info](Screenshots/user_info.png)
  - **Count Persons**: shows count of people in front of camera.
-  ![Count Persons](screenshots/count_persons.png)
+  ![Count Persons](Screenshots/count_persons.png)
   
   
   ## Installation & Setup
