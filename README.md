@@ -1,4 +1,7 @@
 # FacePresenceAI
+<p align="center">
+<img src="media/fr.jpg" alt="face recognition" width="400" style="border-radius: 10px"/>
+</p>
 # Face Recognition system with Python,PyQt5 and PostgreSQL
 
 A smart AI-powered face recognition and attendance management system designed for security and monitoring applications. It uses:
