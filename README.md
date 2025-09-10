@@ -51,10 +51,6 @@ The database includes tables for Persons, Access Logs, Permissions, Cameras, and
   
   ![Face Recognition](Screenshots/face_recognition.png)
   
- - **Count Persons**: shows count of people in front of camera.
-   
-  ![Count Persons](Screenshots/count_persons.png)
-  
   
   ## Installation & Setup
 1. **Prerequisites**:
