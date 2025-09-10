@@ -1,4 +1,6 @@
-# FacePresenceAI
+<p style="text-align:center">
+<h1 style="text-align: center;">FacePresenceAI</h1>
+</p>
 <p align="center">
 <img src="media/fr.png" alt="face recognition" width="400" style="border-radius: 10px"/>
 </p>
