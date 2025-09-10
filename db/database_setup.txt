@@ -1,0 +1,127 @@
+## How to create tables:
+
+-- Table: public.persons
+
+-- DROP TABLE IF EXISTS public.persons;
+
+CREATE TABLE IF NOT EXISTS public.persons
+(
+    id integer NOT NULL DEFAULT nextval('persons_id_seq'::regclass),
+    first_name text COLLATE pg_catalog."default" NOT NULL,
+    last_name text COLLATE pg_catalog."default" NOT NULL,
+    national_id character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    image bytea,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    permission boolean DEFAULT true,
+    face_features bytea,
+    CONSTRAINT persons_pkey PRIMARY KEY (id),
+    CONSTRAINT persons_national_id_key UNIQUE (national_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.persons
+    OWNER to faceuser;
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+-- Table: public.cameras
+
+-- DROP TABLE IF EXISTS public.cameras;
+
+CREATE TABLE IF NOT EXISTS public.cameras
+(
+    id integer NOT NULL DEFAULT nextval('cameras_id_seq'::regclass),
+    name text COLLATE pg_catalog."default" NOT NULL,
+    index integer NOT NULL,
+    CONSTRAINT cameras_pkey PRIMARY KEY (id),
+    CONSTRAINT cameras_index_key UNIQUE (index)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.cameras
+    OWNER to faceuser;
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+-- Table: public.permissions
+
+-- DROP TABLE IF EXISTS public.permissions;
+
+CREATE TABLE IF NOT EXISTS public.permissions
+(
+    id integer NOT NULL DEFAULT nextval('permissions_id_seq'::regclass),
+    person_id integer,
+    camera_id integer,
+    type text COLLATE pg_catalog."default" NOT NULL,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    start_datetime timestamp without time zone NOT NULL,
+    end_datetime timestamp without time zone NOT NULL,
+    status text COLLATE pg_catalog."default" NOT NULL DEFAULT 'active'::text,
+    updated_at timestamp without time zone,
+    CONSTRAINT permissions_pkey PRIMARY KEY (id),
+    CONSTRAINT permissions_camera_id_fkey FOREIGN KEY (camera_id)
+        REFERENCES public.cameras (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    CONSTRAINT permissions_person_id_fkey FOREIGN KEY (person_id)
+        REFERENCES public.persons (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    CONSTRAINT permissions_status_check CHECK (status = ANY (ARRAY['active'::text, 'inactive'::text]))
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.permissions
+    OWNER to faceuser;
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+-- Table: public.access_logs
+
+-- DROP TABLE IF EXISTS public.access_logs;
+
+CREATE TABLE IF NOT EXISTS public.access_logs
+(
+    id integer NOT NULL DEFAULT nextval('access_logs_id_seq'::regclass),
+    person_id integer,
+    camera_id integer,
+    entry_date date NOT NULL,
+    entry_time time without time zone NOT NULL,
+    exit_time time without time zone,
+    confidence numeric(5,2),
+    status text COLLATE pg_catalog."default" NOT NULL,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT access_logs_pkey PRIMARY KEY (id),
+    CONSTRAINT access_logs_camera_id_fkey FOREIGN KEY (camera_id)
+        REFERENCES public.cameras (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE SET NULL,
+    CONSTRAINT access_logs_person_id_fkey FOREIGN KEY (person_id)
+        REFERENCES public.persons (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE SET NULL
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.access_logs
+    OWNER to faceuser;
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+-- Table: public.report_exports
+
+-- DROP TABLE IF EXISTS public.report_exports;
+
+CREATE TABLE IF NOT EXISTS public.report_exports
+(
+    id integer NOT NULL DEFAULT nextval('report_exports_id_seq'::regclass),
+    export_type text COLLATE pg_catalog."default" NOT NULL,
+    file_path text COLLATE pg_catalog."default" NOT NULL,
+    filters jsonb,
+    export_time timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT report_exports_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.report_exports
+    OWNER to faceuser;

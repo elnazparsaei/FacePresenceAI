@@ -1,0 +1,15 @@
+PyQt5
+pyqt5-tools
+PyQt5_sip
+qtwidgets
+opencv-python  # for YOLOv8n, YuNet, SFace
+opencv-python-headless
+ultralytics  # for YOLOv8n
+psycopg2  # for PostgreSQL
+psycopg2-binary
+numpy
+pandas
+pillow
+onnxruntime
+numpy
+
