@@ -51,10 +51,6 @@ The database includes tables for Persons, Access Logs, Permissions, Cameras, and
   
   ![Face Recognition](Screenshots/face_recognition.png)
   
-- **User Info**: Shows user details post-recognition, including pop-up info.
-  
-  ![User Info](Screenshots/user_info.png)
-  
  - **Count Persons**: shows count of people in front of camera.
    
   ![Count Persons](Screenshots/count_persons.png)
