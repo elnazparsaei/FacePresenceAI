@@ -36,16 +36,27 @@ The database includes tables for Persons, Access Logs, Permissions, Cameras, and
 
 ## Screenshots
 - **Attendance Management**: Displays a table of logs with time and status filters.
+  
   ![Attendance Management](Screenshots/attendance_management.png)
+  
 - **Report Page**: Features a calendar and list of exported reports.
+  
   ![Report Page](Screenshots/report_page.png)
+  
 - **User Entry**: Form for registering new users with camera preview.
+
   ![User Entry](Screenshots/user_entry.png)
+  
 - **Face Detection**: Green bounding box around detected faces with status display.
+  
   ![Face Recognition](Screenshots/face_recognition.png)
+  
 - **User Info**: Shows user details post-recognition, including pop-up info.
+  
   ![User Info](Screenshots/user_info.png)
+  
  - **Count Persons**: shows count of people in front of camera.
+   
   ![Count Persons](Screenshots/count_persons.png)
   
   
